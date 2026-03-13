@@ -341,15 +341,14 @@ def logout():
 
 # ---------------- RUN ----------------
 if __name__ == '__main__':
+    from flask import Flask, render_template, request, redirect, session, send_file
+    import os
+    import sqlite3
+    import cv2
+    from datetime import datetime
 
-from flask import Flask, render_template, request, redirect, session, send_file
-import os
-import sqlite3
-import cv2
-from datetime import datetime
-
-app = Flask(__name__)
-app.secret_key = "2027"
+    app = Flask(__name__)
+    app.secret_key = "2027"
 
 # ---------------- DATABASE INIT ----------------
 def init_db():
