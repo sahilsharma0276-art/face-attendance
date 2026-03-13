@@ -1,4 +1,3 @@
-
 from flask import Flask, render_template, request, redirect, session, send_file, url_for
 import os
 import sqlite3
@@ -343,7 +342,6 @@ def logout():
 # ---------------- RUN ----------------
 if __name__ == '__main__':
 
-=======
 from flask import Flask, render_template, request, redirect, session, send_file
 import os
 import sqlite3
@@ -599,5 +597,4 @@ def logout():
 
 # ---------------- RUN (IMPORTANT FOR MOBILE ACCESS) ----------------
 if __name__ == '__main__':
->>>>>>> fe3712a1746a474a3e7df8b939355920585d9381
     app.run(host='0.0.0.0', port=5000, debug=True)
