@@ -1,0 +1,372 @@
+<<<<<<< HEAD
+/* MAIN LAYOUT */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: #0d1117;
+    color: white;
+    display: flex;
+    height: 100vh;
+    position: relative; /* ⭐ Sliding text ke liye */
+}
+
+/* LEFT SIDEBAR */
+.sidebar {
+    width: 240px;
+    background: #151b23;
+    padding: 20px;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.5);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+}
+
+.sidebar h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #c9d1d9;
+}
+
+.menu {
+    display: block;
+    padding: 12px 15px;
+    margin: 8px 0;
+    background: #1f2732;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #c9d1d9;
+    font-size: 15px;
+    transition: 0.2s ease;
+}
+
+.menu i {
+    margin-right: 10px;
+}
+
+.menu:hover {
+    background: #283340;
+}
+
+.logout {
+    background: #b82c2c !important;
+}
+.logout:hover {
+    background: #d93636 !important;
+}
+
+/* RIGHT SIDE MAIN CONTENT */
+.main-content {
+    margin-left: 260px;
+    padding: 30px;
+    flex: 1;
+    overflow-y: auto;
+}
+
+.title {
+    font-size: 32px;
+    margin-bottom: 25px;
+}
+
+/* COUNT BOX */
+.count-box {
+    background: #1f2732;
+    padding: 20px;
+    border-radius: 10px;
+    width: 250px;
+    font-size: 20px;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+/* STUDENT LIST BOX */
+.student-list {
+    background: #1f2732;
+    padding: 15px;
+    border-radius: 10px;
+    width: 350px;
+    max-height: 230px;
+    overflow-y: auto;
+    margin-bottom: 25px;
+}
+
+.student-item {
+    padding: 7px 5px;
+    border-bottom: 1px solid #333;
+    font-size: 15px;
+}
+
+/* BUTTONS IN GRID */
+.btn-row {
+    display: grid;
+    grid-template-columns: repeat(2, 260px);
+    gap: 18px;
+    margin-bottom: 25px;
+}
+
+.btn-row a {
+    text-decoration: none;
+}
+
+.btn {
+    padding: 15px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bold;
+    color: white;
+    width: 100%;
+}
+
+.btn-add { background: #0072ff; }
+.btn-start { background: #0cca4a; }
+.btn-view { background: #f0ad00; color: black; }
+.btn-about { background: #9b21ff; }
+
+/* REMOVE STUDENT BLOCK */
+.remove-box {
+    background: #1f2732;
+    padding: 20px;
+    border-radius: 10px;
+    width: 450px;
+}
+
+.remove-box h3 {
+    margin-top: 0;
+    margin-bottom: 12px;
+}
+
+.remove-box input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    margin-bottom: 12px;
+    font-size: 15px;
+}
+
+.remove-box button {
+    width: 100%;
+    padding: 12px;
+    background: #d12bff;
+    border: none;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.remove-box button:hover {
+    background: #b01ed0;
+}
+
+/* ⭐⭐⭐ RIGHT SIDE SLIDING TEXT (POINTWISE + CENTER RIGHT) ⭐⭐⭐ */
+.right-slide {
+    position: absolute;
+    right: 60px;     /* center right adjust */
+    top: 30%;        /* perfect vertical center */
+    width: 300px;
+    height: 180px;
+    overflow: hidden;
+    text-align: center;
+}
+
+/* हर लाइन अलग-अलग नीचे से ऊपर जाएगी */
+.slide-text {
+    color: red;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 38px;   /* clean spacing */
+    animation: slideUp 10s linear infinite;
+}
+
+@keyframes slideUp {
+    0%   { transform: translateY(100%); }
+    100% { transform: translateY(-220%); }
+=======
+/* MAIN LAYOUT */
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: #0d1117;
+    color: white;
+    display: flex;
+    height: 100vh;
+    position: relative; /* ⭐ Sliding text ke liye */
+}
+
+/* LEFT SIDEBAR */
+.sidebar {
+    width: 240px;
+    background: #151b23;
+    padding: 20px;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.5);
+    position: fixed;
+    top: 0;
+    bottom: 0;
+}
+
+.sidebar h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #c9d1d9;
+}
+
+.menu {
+    display: block;
+    padding: 12px 15px;
+    margin: 8px 0;
+    background: #1f2732;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #c9d1d9;
+    font-size: 15px;
+    transition: 0.2s ease;
+}
+
+.menu i {
+    margin-right: 10px;
+}
+
+.menu:hover {
+    background: #283340;
+}
+
+.logout {
+    background: #b82c2c !important;
+}
+.logout:hover {
+    background: #d93636 !important;
+}
+
+/* RIGHT SIDE MAIN CONTENT */
+.main-content {
+    margin-left: 260px;
+    padding: 30px;
+    flex: 1;
+    overflow-y: auto;
+}
+
+.title {
+    font-size: 32px;
+    margin-bottom: 25px;
+}
+
+/* COUNT BOX */
+.count-box {
+    background: #1f2732;
+    padding: 20px;
+    border-radius: 10px;
+    width: 250px;
+    font-size: 20px;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+/* STUDENT LIST BOX */
+.student-list {
+    background: #1f2732;
+    padding: 15px;
+    border-radius: 10px;
+    width: 350px;
+    max-height: 230px;
+    overflow-y: auto;
+    margin-bottom: 25px;
+}
+
+.student-item {
+    padding: 7px 5px;
+    border-bottom: 1px solid #333;
+    font-size: 15px;
+}
+
+/* BUTTONS IN GRID */
+.btn-row {
+    display: grid;
+    grid-template-columns: repeat(2, 260px);
+    gap: 18px;
+    margin-bottom: 25px;
+}
+
+.btn-row a {
+    text-decoration: none;
+}
+
+.btn {
+    padding: 15px;
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    font-size: 15px;
+    font-weight: bold;
+    color: white;
+    width: 100%;
+}
+
+.btn-add { background: #0072ff; }
+.btn-start { background: #0cca4a; }
+.btn-view { background: #f0ad00; color: black; }
+.btn-about { background: #9b21ff; }
+
+/* REMOVE STUDENT BLOCK */
+.remove-box {
+    background: #1f2732;
+    padding: 20px;
+    border-radius: 10px;
+    width: 450px;
+}
+
+.remove-box h3 {
+    margin-top: 0;
+    margin-bottom: 12px;
+}
+
+.remove-box input {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: none;
+    margin-bottom: 12px;
+    font-size: 15px;
+}
+
+.remove-box button {
+    width: 100%;
+    padding: 12px;
+    background: #d12bff;
+    border: none;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 15px;
+}
+
+.remove-box button:hover {
+    background: #b01ed0;
+}
+
+/* ⭐⭐⭐ RIGHT SIDE SLIDING TEXT (POINTWISE + CENTER RIGHT) ⭐⭐⭐ */
+.right-slide {
+    position: absolute;
+    right: 60px;     /* center right adjust */
+    top: 30%;        /* perfect vertical center */
+    width: 300px;
+    height: 180px;
+    overflow: hidden;
+    text-align: center;
+}
+
+/* हर लाइन अलग-अलग नीचे से ऊपर जाएगी */
+.slide-text {
+    color: red;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 38px;   /* clean spacing */
+    animation: slideUp 10s linear infinite;
+}
+
+@keyframes slideUp {
+    0%   { transform: translateY(100%); }
+    100% { transform: translateY(-220%); }
+>>>>>>> fe3712a1746a474a3e7df8b939355920585d9381
+}

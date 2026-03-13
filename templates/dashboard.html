@@ -1,0 +1,619 @@
+<<<<<<< HEAD
+<!DOCTYPE html>
+<html>
+<head>
+<title>Face Recognition Attendance</title>
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+<style>
+
+body {
+margin:0;
+font-family:'Segoe UI',sans-serif;
+background:#0d1117;
+color:white;
+display:flex;
+height:100vh;
+position:relative;
+}
+
+.sidebar{
+width:240px;
+background:#151b23;
+padding:20px;
+box-shadow:2px 0 10px rgba(0,0,0,0.5);
+}
+
+.sidebar h2{
+text-align:center;
+margin-bottom:30px;
+}
+
+.menu{
+display:block;
+padding:12px 15px;
+margin:8px 0;
+background:#1f2732;
+border-radius:8px;
+text-decoration:none;
+color:#c9d1d9;
+font-size:15px;
+cursor:pointer;
+}
+
+.menu:hover{
+background:#283340;
+}
+
+.logout{
+background:#b82c2c!important;
+}
+
+.logout:hover{
+background:#d93636!important;
+}
+
+.main-content{
+flex:1;
+padding:30px;
+overflow-y:auto;
+}
+
+.title{
+font-size:32px;
+margin-bottom:25px;
+}
+
+.count-box{
+background:#1f2732;
+padding:20px;
+border-radius:10px;
+width:250px;
+margin-bottom:20px;
+font-size:18px;
+text-align:center;
+}
+
+.student-list{
+background:#1f2732;
+padding:15px;
+border-radius:10px;
+width:350px;
+height:200px;
+overflow-y:auto;
+margin-bottom:25px;
+}
+
+.student-item{
+padding:7px 5px;
+border-bottom:1px solid #333;
+}
+
+.btn-row{
+display:grid;
+grid-template-columns:repeat(2,250px);
+gap:15px;
+margin-bottom:20px;
+}
+
+.btn{
+padding:15px;
+border-radius:10px;
+border:none;
+cursor:pointer;
+font-size:15px;
+font-weight:bold;
+color:white;
+}
+
+.btn-add{background:#0072ff;}
+.btn-start{background:#0cca4a;}
+.btn-view{background:#f0ad00;color:black;}
+.btn-about{background:#9b21ff;}
+.btn-export{background:#00c8ff;color:black;}
+
+.remove-box{
+background:#1f2732;
+padding:20px;
+border-radius:10px;
+width:400px;
+}
+
+.remove-box input{
+width:100%;
+padding:12px;
+border-radius:8px;
+border:none;
+margin-bottom:12px;
+}
+
+.remove-box button{
+width:100%;
+padding:12px;
+background:#d12bff;
+border:none;
+color:white;
+border-radius:8px;
+cursor:pointer;
+}
+
+.right-slide{
+position:absolute;
+right:40px;
+top:28%;
+width:260px;
+height:150px;
+overflow:hidden;
+text-align:right;
+}
+
+.slide-text{
+color:red;
+font-size:20px;
+font-weight:bold;
+line-height:34px;
+animation:slideUp 7s linear infinite;
+}
+
+@keyframes slideUp{
+0%{transform:translateY(105%)}
+100%{transform:translateY(-180%)}
+}
+
+</style>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script>
+
+function secureAccess(url){
+
+Swal.fire({
+title:"Enter Admin Password",
+input:"password",
+inputPlaceholder:"Enter password",
+confirmButtonText:"Submit",
+showCancelButton:true,
+background:"#1f2732",
+color:"white"
+}).then((result)=>{
+
+if(result.isConfirmed){
+
+if(result.value==="3806"){
+
+window.location.href=url;
+
+}else{
+
+Swal.fire({
+icon:"error",
+title:"Wrong Password",
+text:"Access Denied",
+background:"#1f2732",
+color:"white"
+});
+
+}
+
+}
+
+});
+
+}
+
+</script>
+
+</head>
+
+<body>
+
+<div class="sidebar">
+
+<h2><i class="fa fa-user-circle"></i> Admin</h2>
+
+<a href="/dashboard" class="menu">Dashboard</a>
+
+<a onclick="secureAccess('/add_student')" class="menu">Add Student</a>
+
+<a onclick="secureAccess('/recognize')" class="menu">Start Attendance</a>
+
+<a onclick="secureAccess('/attendance')" class="menu">View Attendance</a>
+
+<a onclick="secureAccess('/export')" class="menu">Export Attendance</a>
+
+<a onclick="secureAccess('#remove')" class="menu">Remove Student</a>
+
+<a onclick="secureAccess('/about')" class="menu">About Project</a>
+
+<a href="/logout" class="menu logout">Logout</a>
+
+</div>
+
+<div class="main-content">
+
+<div class="title">Face Recognition Attendance</div>
+
+<div class="count-box">
+Total Students: {{ total_students }}
+</div>
+
+<div class="student-list">
+
+{% if student_list %}
+
+{% for s in student_list %}
+<div class="student-item"><i class="fa fa-user"></i> {{ s }}</div>
+{% endfor %}
+
+{% else %}
+
+<div>No Students Found</div>
+
+{% endif %}
+
+</div>
+
+<div class="btn-row">
+
+<button onclick="secureAccess('/add_student')" class="btn btn-add">
+Add Student
+</button>
+
+<button onclick="secureAccess('/recognize')" class="btn btn-start">
+Start Attendance
+</button>
+
+<button onclick="secureAccess('/attendance')" class="btn btn-view">
+View Attendance
+</button>
+
+<button onclick="secureAccess('/about')" class="btn btn-about">
+About Project
+</button>
+
+<button onclick="secureAccess('/export')" class="btn btn-export">
+Export CSV
+</button>
+
+</div>
+
+<div id="remove" class="remove-box">
+
+<h3>Remove Student</h3>
+
+<form action="/remove_student" method="POST">
+
+<input type="text" name="name" placeholder="Enter Student Name" required>
+
+<button type="submit">Delete</button>
+
+</form>
+
+</div>
+
+</div>
+
+<div class="right-slide">
+<div class="slide-text">
+
+DEVELOPED BY<br>
+SAHIL SHARMA<br>
+MOHIT SAINI<br>
+SUMIT RAJPUT<br>
+
+</div>
+</div>
+
+</body>
+=======
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Face Recognition Attendance</title>
+
+    <!-- Icons -->
+    <link rel="stylesheet"
+     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <style>
+
+        /* MAIN LAYOUT */
+        body {
+            margin: 0;
+            font-family: 'Segoe UI', sans-serif;
+            background: #0d1117;
+            color: white;
+            display: flex;
+            height: 100vh;
+            position: relative; /* ⭐ sliding text ke liye */
+        }
+
+        /* LEFT SIDEBAR */
+        .sidebar {
+            width: 240px;
+            background: #151b23;
+            padding: 20px;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.5);
+        }
+
+        .sidebar h2 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .menu {
+            display: block;
+            padding: 12px 15px;
+            margin: 8px 0;
+            background: #1f2732;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #c9d1d9;
+            font-size: 15px;
+        }
+
+        .menu:hover {
+            background: #283340;
+        }
+
+        .logout {
+            background: #b82c2c !important;
+        }
+        .logout:hover {
+            background: #d93636 !important;
+        }
+
+        /* RIGHT MAIN CONTENT */
+        .main-content {
+            flex: 1;
+            padding: 30px;
+            overflow-y: auto;
+        }
+
+        .title {
+            font-size: 32px;
+            margin-bottom: 25px;
+        }
+
+        /* COUNT BOX */
+        .count-box {
+            background: #1f2732;
+            padding: 20px;
+            border-radius: 10px;
+            width: 250px;
+            margin-bottom: 20px;
+            font-size: 18px;
+            text-align: center;
+        }
+
+        /* STUDENT LIST */
+        .student-list {
+            background: #1f2732;
+            padding: 15px;
+            border-radius: 10px;
+            width: 350px;
+            height: 200px;
+            overflow-y: auto;
+            margin-bottom: 25px;
+        }
+
+        .student-item {
+            padding: 7px 5px;
+            border-bottom: 1px solid #333;
+        }
+
+        /* BUTTONS ROW */
+        .btn-row {
+            display: grid;
+            grid-template-columns: repeat(2, 250px);
+            gap: 15px;
+            margin-bottom: 20px;
+        }
+
+        .btn {
+            padding: 15px;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: bold;
+            color: white;
+        }
+
+        .btn-add { background: #0072ff; }
+        .btn-start { background: #0cca4a; }
+        .btn-view { background: #f0ad00; color: black; }
+        .btn-about { background: #9b21ff; }
+        .btn-export { background: #00c8ff; color: black; }
+
+        /* REMOVE STUDENT BOX */
+        .remove-box {
+            background: #1f2732;
+            padding: 20px;
+            border-radius: 10px;
+            width: 400px;
+        }
+
+        .remove-box input {
+            width: 100%;
+            padding: 12px;
+            border-radius: 8px;
+            border: none;
+            margin-bottom: 12px;
+        }
+
+        .remove-box button {
+            width: 100%;
+            padding: 12px;
+            background: #d12bff;
+            border: none;
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        /* ⭐ RIGHT SIDE SLIDING TEXT (POINT-WISE) ⭐ */
+        .right-slide {
+            position: absolute;
+            right: 40px;
+            top: 28%;
+            width: 260px;
+            height: 150px;
+            overflow: hidden;
+            text-align: right;
+        }
+
+        .slide-text {
+            color: red;
+            font-size: 20px;
+            font-weight: bold;
+            line-height: 34px;
+            animation: slideUp 7s linear infinite;
+        }
+
+        @keyframes slideUp {
+            0%   { transform: translateY(105%); }
+            100% { transform: translateY(-180%); }
+        }
+
+    </style>
+
+    <!-- ⭐ STEP 1: SweetAlert2 Script ⭐ -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- ⭐ FEATURE 8: Toast Notification Function ⭐ -->
+    <script>
+        function showToast(type, message) {
+            Swal.fire({
+                toast: true,
+                position: 'top-end',
+                icon: type,
+                title: message,
+                showConfirmButton: false,
+                timer: 1500,
+                background: "#1f2732",
+                color: "white",
+            });
+        }
+    </script>
+
+    <!-- ⭐ STEP 2: Password Popup Function ⭐ -->
+    <script>
+        function secureAccess(url) {
+            Swal.fire({
+                title: "Enter Admin Password",
+                input: "password",
+                inputPlaceholder: "Enter password",
+                confirmButtonText: "Submit",
+                showCancelButton: true,
+                background: "#1f2732",
+                color: "white",
+                confirmButtonColor: "#3085d6",
+                cancelButtonColor: "#d33",
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    if (result.value === "0276") {
+                        window.location.href = url;
+                    } else {
+                        Swal.fire({
+                            icon: "error",
+                            title: "Wrong Password!",
+                            text: "Access Denied",
+                            background: "#1f2732",
+                            color: "white",
+                        });
+                    }
+                }
+            });
+        }
+    </script>
+
+</head>
+
+<body>
+
+    <!-- LEFT SIDEBAR -->
+    <div class="sidebar">
+        <h2><i class="fa fa-user-circle"></i> Admin</h2>
+
+        <a href="/dashboard" class="menu">Dashboard</a>
+        <a href="/add_student" class="menu">Add Student</a>
+        <a href="/recognize" class="menu">Start Attendance</a>
+
+        <!-- ⭐ Password Protected Options ⭐ -->
+        <a onclick="secureAccess('/attendance')" class="menu">View Attendance</a>
+        <a onclick="secureAccess('/export')" class="menu">Export Attendance</a>
+        <a onclick="secureAccess('#remove')" class="menu">Remove Student</a>
+
+        <a href="/about" class="menu">About Project</a>
+        <a href="/logout" class="menu logout">Logout</a>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div class="main-content">
+
+        <div class="title">Face Recognition Attendance</div>
+
+        <!-- STUDENT COUNT -->
+        <div class="count-box">
+            Total Students: {{ total_students }}
+        </div>
+
+        <!-- STUDENT LIST -->
+        <div class="student-list">
+            {% if student_list %}
+                {% for s in student_list %}
+                    <div class="student-item"><i class="fa fa-user"></i> {{ s }}</div>
+                {% endfor %}
+            {% else %}
+                <div>No Students Found</div>
+            {% endif %}
+        </div>
+
+        <!-- BUTTONS -->
+        <div class="btn-row">
+            <a href="/add_student"><button class="btn btn-add">Add Student</button></a>
+            <a href="/recognize"><button class="btn btn-start">Start Attendance</button></a>
+
+            <a href="/attendance"><button class="btn btn-view">View Attendance</button></a>
+            <a href="/about"><button class="btn btn-about">About Project</button></a>
+
+            <a href="/export"><button class="btn btn-export">Export CSV</button></a>
+        </div>
+
+        <!-- REMOVE STUDENT BOX -->
+        <div id="remove" class="remove-box">
+            <h3>Remove Student</h3>
+
+            <form action="/remove_student" method="POST">
+                <input type="text" name="name" placeholder="Enter Student Name" required>
+                <button type="submit">Delete</button>
+            </form>
+        </div>
+
+        <!-- ⭐ TOAST SHOW (If Flask Sends Message) ⭐ -->
+        {% if msg %}
+        <script>
+            showToast("success", "{{ msg }}");
+        </script>
+        {% endif %}
+
+    </div>
+
+    <!-- ⭐ RIGHT SIDE SLIDING TEXT ⭐ -->
+    <div class="right-slide">
+        <div class="slide-text">
+            DEVELOPED BY<br>
+            SAHIL SHARMA<br>
+            MOHIT SAINI<br>
+            SUMIT RAJPUT<br>
+            FACE RECOGNITION ATTENDANCE
+        </div>
+    </div>
+
+</body>
+>>>>>>> fe3712a1746a474a3e7df8b939355920585d9381
+</html>

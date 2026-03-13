@@ -1,0 +1,270 @@
+<<<<<<< HEAD
+/* PAGE BACKGROUND */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #0a4ba0, #1e88e5);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;   /* ⭐ Needed for right-side animation */
+}
+
+/* LOGIN BOX */
+.login-container {
+    background: rgba(255, 255, 255, 0.18);
+    width: 330px;
+    padding: 22px 25px;
+    border-radius: 15px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+    backdrop-filter: blur(10px);
+    color: white;
+    transition: 0.3s ease;
+}
+
+/* SHAKE ANIMATION WHEN ERROR */
+.shake {
+    animation: shakeAnim 0.4s ease;
+}
+
+@keyframes shakeAnim {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-8px); }
+    50% { transform: translateX(8px); }
+    75% { transform: translateX(-8px); }
+    100% { transform: translateX(0); }
+}
+
+/* LOGO */
+.login-logo {
+    width: 60px;
+    display: block;
+    margin: 0 auto 12px auto;
+}
+
+/* HEADING */
+.login-container h2 {
+    text-align: center;
+    margin-bottom: 18px;
+    font-size: 22px;
+}
+
+/* INPUT GROUP */
+.input-group {
+    margin-bottom: 10px;
+    position: relative;
+}
+
+/* INPUT FIELD */
+.input-group input {
+    width: 85%;
+    margin-left: 35px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+}
+
+/* ICONS IN INPUT */
+.input-group i {
+    position: absolute;
+    left: 10px;
+    top: 12px;
+    font-size: 18px;
+    color: #063a7a;
+}
+
+/* LOGIN BUTTON */
+.btn-login {
+    width: 85%;
+    margin-left: 35px;
+    padding: 10px;
+    background: #063a7a;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: 0.2s ease;
+}
+
+.btn-login:hover {
+    background: #042f63;
+}
+
+/* ERROR TEXT */
+.error {
+    text-align: center;
+    color: #ff8080;
+    margin-top: 8px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+
+/* ⭐⭐⭐ STEP-1: RIGHT SIDE SCROLLING TEXT ANIMATION ⭐⭐⭐ */
+
+.right-scroll-box {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    width: 280px;
+    height: 180px;
+    transform: translateY(-50%);
+    overflow: hidden;
+    border-left: 3px solid rgb(74, 10, 239);
+    padding-left: 20px;
+}
+
+.scroll-text {
+    position: absolute;
+    width: 100%;
+    animation: scroll-up 45s linear infinite;
+    color: #170ce7;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 40px;
+}
+
+@keyframes scroll-up {
+    0% { top: 100%; }
+    100% { top: -200%; }
+=======
+/* PAGE BACKGROUND */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(135deg, #0a4ba0, #1e88e5);
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;   /* ⭐ Needed for right-side animation */
+}
+
+/* LOGIN BOX */
+.login-container {
+    background: rgba(255, 255, 255, 0.18);
+    width: 330px;
+    padding: 22px 25px;
+    border-radius: 15px;
+    box-shadow: 0 8px 30px rgba(0,0,0,0.25);
+    backdrop-filter: blur(10px);
+    color: white;
+    transition: 0.3s ease;
+}
+
+/* SHAKE ANIMATION WHEN ERROR */
+.shake {
+    animation: shakeAnim 0.4s ease;
+}
+
+@keyframes shakeAnim {
+    0% { transform: translateX(0); }
+    25% { transform: translateX(-8px); }
+    50% { transform: translateX(8px); }
+    75% { transform: translateX(-8px); }
+    100% { transform: translateX(0); }
+}
+
+/* LOGO */
+.login-logo {
+    width: 60px;
+    display: block;
+    margin: 0 auto 12px auto;
+}
+
+/* HEADING */
+.login-container h2 {
+    text-align: center;
+    margin-bottom: 18px;
+    font-size: 22px;
+}
+
+/* INPUT GROUP */
+.input-group {
+    margin-bottom: 10px;
+    position: relative;
+}
+
+/* INPUT FIELD */
+.input-group input {
+    width: 85%;
+    margin-left: 35px;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+}
+
+/* ICONS IN INPUT */
+.input-group i {
+    position: absolute;
+    left: 10px;
+    top: 12px;
+    font-size: 18px;
+    color: #063a7a;
+}
+
+/* LOGIN BUTTON */
+.btn-login {
+    width: 85%;
+    margin-left: 35px;
+    padding: 10px;
+    background: #063a7a;
+    border: none;
+    border-radius: 8px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: 0.2s ease;
+}
+
+.btn-login:hover {
+    background: #042f63;
+}
+
+/* ERROR TEXT */
+.error {
+    text-align: center;
+    color: #ff8080;
+    margin-top: 8px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+
+/* ⭐⭐⭐ STEP-1: RIGHT SIDE SCROLLING TEXT ANIMATION ⭐⭐⭐ */
+
+.right-scroll-box {
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    width: 280px;
+    height: 180px;
+    transform: translateY(-50%);
+    overflow: hidden;
+    border-left: 3px solid rgb(74, 10, 239);
+    padding-left: 20px;
+}
+
+.scroll-text {
+    position: absolute;
+    width: 100%;
+    animation: scroll-up 45s linear infinite;
+    color: #170ce7;
+    font-size: 20px;
+    font-weight: bold;
+    line-height: 40px;
+}
+
+@keyframes scroll-up {
+    0% { top: 100%; }
+    100% { top: -200%; }
+>>>>>>> fe3712a1746a474a3e7df8b939355920585d9381
+} 

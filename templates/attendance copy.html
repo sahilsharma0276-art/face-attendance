@@ -1,0 +1,124 @@
+<<<<<<< HEAD
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Attendance</title>
+    <style>
+        body{
+            background:#0f172a;
+            color:white;
+            text-align:center;
+            font-family:Arial;
+        }
+
+        table{
+            margin:auto;
+            border-collapse:collapse;
+            width:70%;
+            margin-top:50px;
+        }
+
+        th, td{
+            border:1px solid #334155;
+            padding:10px;
+        }
+
+        th{
+            background:#1e293b;
+        }
+
+        tr:hover{
+            background:#1e293b;
+        }
+
+        a{
+            color:#3b82f6;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Attendance Records</h2>
+
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Date</th>
+        <th>Time</th>
+    </tr>
+    {% for row in data %}
+    <tr>
+        <td>{{ row[0] }}</td>
+        <td>{{ row[1] }}</td>
+        <td>{{ row[2] }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<br><br>
+<a href="/dashboard">Back to Dashboard</a>
+
+</body>
+=======
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Attendance</title>
+    <style>
+        body{
+            background:#0f172a;
+            color:white;
+            text-align:center;
+            font-family:Arial;
+        }
+
+        table{
+            margin:auto;
+            border-collapse:collapse;
+            width:70%;
+            margin-top:50px;
+        }
+
+        th, td{
+            border:1px solid #334155;
+            padding:10px;
+        }
+
+        th{
+            background:#1e293b;
+        }
+
+        tr:hover{
+            background:#1e293b;
+        }
+
+        a{
+            color:#3b82f6;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Attendance Records</h2>
+
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Date</th>
+        <th>Time</th>
+    </tr>
+    {% for row in data %}
+    <tr>
+        <td>{{ row[0] }}</td>
+        <td>{{ row[1] }}</td>
+        <td>{{ row[2] }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+<br><br>
+<a href="/dashboard">Back to Dashboard</a>
+
+</body>
+>>>>>>> fe3712a1746a474a3e7df8b939355920585d9381
+</html>   

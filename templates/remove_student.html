@@ -1,0 +1,128 @@
+<<<<<<< HEAD
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Remove Student</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial;
+            background: #111;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .box {
+            background: #222;
+            padding: 30px;
+            width: 350px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        select, button {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border: none;
+        }
+
+        button {
+            background: #e60000;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background: #b80000;
+        }
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <h2>Remove Student</h2>
+
+    <form action="/remove_student" method="POST">
+        <select name="name" required>
+            {% for s in students %}
+                <option value="{{ s }}">{{ s }}</option>
+            {% endfor %}
+        </select>
+
+        <button type="submit">Delete Student</button>
+    </form>
+
+</div>
+
+</body>
+=======
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Remove Student</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial;
+            background: #111;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .box {
+            background: #222;
+            padding: 30px;
+            width: 350px;
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        select, button {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border: none;
+        }
+
+        button {
+            background: #e60000;
+            color: white;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background: #b80000;
+        }
+    </style>
+</head>
+<body>
+
+<div class="box">
+    <h2>Remove Student</h2>
+
+    <form action="/remove_student" method="POST">
+        <select name="name" required>
+            {% for s in students %}
+                <option value="{{ s }}">{{ s }}</option>
+            {% endfor %}
+        </select>
+
+        <button type="submit">Delete Student</button>
+    </form>
+
+</div>
+
+</body>
+>>>>>>> fe3712a1746a474a3e7df8b939355920585d9381
+</html>

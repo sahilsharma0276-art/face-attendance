@@ -1,0 +1,206 @@
+<<<<<<< HEAD
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Admin Login</title><link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}"><link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"><style>
+
+body{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+margin:0;
+}
+
+/* LOGIN BOX */
+
+.login-container{
+background:#121212;
+padding:40px;
+border-radius:12px;
+width:360px;
+text-align:center;
+box-shadow:0 0 25px rgba(0,0,0,0.6);
+color:white;
+}
+
+.login-logo{
+width:80px;
+margin-bottom:10px;
+}
+
+h2{
+margin-bottom:20px;
+}
+
+/* INPUT GROUP */
+
+.input-group{
+position:relative;
+margin-bottom:18px;
+}
+
+.input-group i.fa-user,
+.input-group i.fa-lock{
+position:absolute;
+left:12px;
+top:12px;
+color:#bbb;
+}
+
+/* INPUT FIELDS */
+
+.input-group input{
+width:100%;
+padding:12px 12px 12px 38px;
+border-radius:6px;
+border:1px solid #444;
+font-size:14px;
+box-sizing:border-box;
+background:#1e1e1e;
+color:white;
+}
+
+/* SHOW PASSWORD */
+
+.show-pass{
+text-align:left;
+font-size:14px;
+margin-bottom:18px;
+color:#ddd;
+}
+
+/* LOGIN BUTTON */
+
+.btn-login{
+width:100%;
+padding:12px;
+border:none;
+background:#007bff;
+color:white;
+border-radius:6px;
+font-size:16px;
+cursor:pointer;
+}
+
+.btn-login:hover{
+background:#0056b3;
+}
+
+.error{
+color:#ff4d4d;
+margin-top:10px;
+}
+
+</style></head><body><div class="login-container {% if error %}shake{% endif %}"><img src="{{ url_for('static', filename='face_logo.png') }}" class="login-logo"><h2>Admin Login</h2><form action="/check" method="POST" autocomplete="off"><input type="hidden" name="username" value="admin"><div class="input-group"><i class="fa fa-user"></i>
+
+<input type="text" value="admin" readonly autocomplete="off"></div><div class="input-group"><i class="fa fa-lock"></i>
+
+<input type="password"
+id="password"
+name="password"
+placeholder="Enter Password"
+autocomplete="new-password"
+required>
+
+</div><div class="show-pass"><label>
+<input type="checkbox" onclick="togglePassword()"> Show Password
+</label></div><button class="btn-login" type="submit">LOGIN</button>
+
+</form>{% if error %}
+
+<p class="error">Invalid Password!</p>{% endif %}
+
+</div><script>
+
+function togglePassword(){
+
+var pass=document.getElementById("password");
+
+if(pass.type==="password"){
+pass.type="text";
+}
+else{
+pass.type="password";
+}
+
+}
+
+</script></body></html>
+=======
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Login</title>
+
+    <!-- CSS link -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet"
+     href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+
+<body>
+
+    <!-- LOGIN BOX (Shake Animation on Error) -->
+    <div class="login-container {% if error %}shake{% endif %}">
+
+        <!-- Logo -->
+        <img src="{{ url_for('static', filename='face_logo.png') }}" class="login-logo">
+
+        <h2>Admin Login</h2>
+
+        <form action="/check" method="POST">
+
+            <!-- Hidden Username (for backend) -->
+            <input type="hidden" name="username" value="admin">
+
+            <!-- Username -->
+            <div class="input-group">
+                <i class="fa fa-user"></i>
+                <input type="text" value="admin" readonly>
+            </div>
+
+            <!-- Password -->
+            <div class="input-group">
+                <i class="fa fa-lock"></i>
+
+                <!-- Show / Hide Eye Icon -->
+                <i class="fa fa-eye" id="togglePass"
+                   style="right: 12px; top: 12px; cursor:pointer; position:absolute; color:#063a7a;"></i>
+
+                <input type="password" id="password" name="password" placeholder="Enter Password" required>
+            </div>
+
+            <button class="btn-login" type="submit">LOGIN</button>
+
+        </form>
+
+        {% if error %}
+            <p class="error">Invalid Password!</p>
+        {% endif %}
+
+    </div>
+
+    <!-- Show/Hide Password Script -->
+    <script>
+        const pass = document.getElementById("password");
+        const toggle = document.getElementById("togglePass");
+
+        toggle.addEventListener("click", () => {
+            if (pass.type === "password") {
+                pass.type = "text";
+                toggle.classList.remove("fa-eye");
+                toggle.classList.add("fa-eye-slash");
+            } else {
+                pass.type = "password";
+                toggle.classList.remove("fa-eye-slash");
+                toggle.classList.add("fa-eye");
+            }
+        });
+    </script>
+
+</body>
+</html> 
+>>>>>>> fe3712a1746a474a3e7df8b939355920585d9381

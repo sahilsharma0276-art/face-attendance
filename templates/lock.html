@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+<title>Security Lock</title>
+
+<style>
+
+body{
+    margin:0;
+    padding:0;
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-family:Arial;
+    background: linear-gradient(135deg,#0f2027,#203a43,#2c5364);
+}
+
+.lock-box{
+
+    background:#1f2937;
+    padding:40px;
+    border-radius:10px;
+    text-align:center;
+    width:320px;
+    box-shadow:0 0 20px rgba(0,0,0,0.5);
+}
+
+h2{
+    color:white;
+    margin-bottom:20px;
+}
+
+input{
+
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:6px;
+    margin-bottom:15px;
+    font-size:16px;
+}
+
+button{
+
+    width:100%;
+    padding:12px;
+    border:none;
+    border-radius:6px;
+    background:#22c55e;
+    color:white;
+    font-size:16px;
+    cursor:pointer;
+}
+
+button:hover{
+
+    background:#16a34a;
+}
+
+.error{
+
+    color:red;
+    margin-top:10px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="lock-box">
+
+<h2>🔒 Enter Security Password</h2>
+
+<form method="POST">
+
+<input type="password" name="password" placeholder="Enter Password" required>
+
+<button type="submit">Unlock</button>
+
+</form>
+
+{% if error %}
+<p class="error">{{error}}</p>
+{% endif %}
+
+</div>
+
+</body>
+</html>
