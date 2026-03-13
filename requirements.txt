@@ -1,10 +1,4 @@
-<<<<<<< HEAD
 flask
-opencv-python
 numpy
-=======
-flask
 opencv-python
-numpy
->>>>>>> fe3712a1746a474a3e7df8b939355920585d9381
 pandas
